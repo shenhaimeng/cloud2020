@@ -7,6 +7,9 @@
   <groupId>com.shm.springcloud</groupId>
   <artifactId>cloud2020</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>cloud-provider-payment8001</module>
+  </modules>
   <!-- 父工程中只有pom文件，packaging为pom主要目的作为总依赖，作为聚合工程和传递依赖-->
   <packaging>pom</packaging>
   <name>Maven</name>
