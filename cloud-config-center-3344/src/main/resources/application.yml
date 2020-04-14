@@ -1,0 +1,37 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:     #conig提供了外部服务，可以统一放在外部，大家一起运维与管理
+        #http://localhost:3344/master/config-dev.yml 可以直接访问github上的配置文件
+        #配置的读取规则： /{lable}/{application}-{profile}.yml   config-dev
+        #/{application}-{profile}.yml
+        #/{application/{profile}[/lable]
+          skipSslValidation: true # 跳过ssl认证
+          uri: https://github.com/shenhaimeng/cloudConfigCenter.git
+          search-paths:
+            - cloudConfigCenter #找到这个配置文件
+      label: master           #读取分支
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+# rabbitmq相关配置,暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

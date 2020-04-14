@@ -1,0 +1,18 @@
+server:
+  port: 80
+eureka:
+  client:
+    register-with-eureka: false #表示向注册中心注册自己 默认为true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/  #http://eureka7002.com:7002/eureka/ # 入驻地址
+ribbon:
+#由于feign已经整合了ribbon,底层使用的ribbon负载均衡，因此需要该参数
+#两端连接所用的时间
+  ReadTimeout: 5000
+# 连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    #feign日志以什么级别监控哪个接口
+    com.shm.springcloud.service.PaymentFeignService: debug

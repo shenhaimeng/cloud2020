@@ -9,6 +9,24 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>cloud-provider-payment8001</module>
+    <module>cloud-consumer-order80</module>
+      <module>cloud-api-common</module>
+      <module>cloud-eureka-server7001</module>
+    <module>cloud-eureka-server7002</module>
+      <module>cloud-provider-payment8002</module>
+      <module>cloud-provider-payment8004</module>
+      <module>cloud-consumerzk-order80</module>
+      <module>cloud-provider-payment8006</module>
+      <module>cloud-consumercn-oder80</module>
+      <module>cloud-consumer-feign-order80</module>
+      <module>cloud-provider-Hystrix-payment8001</module>
+      <module>cloud-consumer-feign-hystrix-order80</module>
+      <module>cloud-zuul-zuul90</module>
+      <module>cloud-gateway-gateway9572</module>
+      <module>cloud-config-center-3344</module>
+      <module>cloud-stream-rabbitmq-provider8801</module>
+      <module>cloud-stream-rabbitmq-consumer8802</module>
+      <module>cloud-stream-rabbitmq-consumer8803</module>
   </modules>
   <!-- 父工程中只有pom文件，packaging为pom主要目的作为总依赖，作为聚合工程和传递依赖-->
   <packaging>pom</packaging>
@@ -83,16 +101,22 @@
       </dependency>
 
       <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>${mybatis.spring.boot.version}</version>
-      </dependency>
-
-      <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
         <optional>true</optional>
+      </dependency>
+      <!--junit-->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
+      <!-- log4j -->
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

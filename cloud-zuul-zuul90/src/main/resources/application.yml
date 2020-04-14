@@ -1,0 +1,26 @@
+server:
+  port: 90
+spring:
+  application:
+    name: cloud-zuul #微服务名称
+eureka:
+  client:
+    register-with-eureka: true #表示向注册中心注册自己 默认为true
+    fetch-registry: true #是否从EurekaServer抓取已有的注册信息，默认为true,单节点无所谓,集群必须设置为true才能配合ribbon使用负载均衡
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/  #http://eureka7002.com:7002/eureka/ # 入驻地址
+  instance:
+      instance-id: zuul90
+      prefer-ip-address: true
+      #    #    lease-renewal-interval-in-seconds: 1 # eureka客户端向服务端发送心跳的时间间隔 单位秒 默认30
+      lease-expiration-duration-in-seconds: 2 # eureka服务端在收到最后一次心跳后等待时间上限，单位为秒，超时将被删除服务
+#zuul的映射规则
+zuul:
+  ignored-services: cloud-payment-service #将通过微服务名称进行访问给限制
+  # ignored-services: "*"  将所有微服务自己端口封锁
+  routes:
+    #访问路径/xxx/将转移到cloud-payment-service服务里面
+      mydept.serviceId: cloud-payment-service
+      mydept.path: /payment/**
+  # prefix: /shm
+  #公共前缀

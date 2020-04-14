@@ -1,0 +1,28 @@
+server:
+  port: 8006
+
+
+spring:
+  application:
+    name: cloud-payment-service #微服务名称
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/cloud?characterEncoding=utf8&useSSL=false&useUnicode=true
+      username: root
+      password: 123456
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml #扫描Mapper位置
+  type-aliases-package: com.shm.springcloud.entities  #所有entity别名所在包
+#  zipkin:
+#    base-url: http://localhost:9411
+#    sleuth:
+#      sampler:
+#        probability: 1
